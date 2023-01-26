@@ -5,22 +5,46 @@
 }
 
 :root {
-    --primary-color: black;
-    --secondary-color: white;
-    --alt-secondary-color: gray;
+    --primary-color: #000;
+    --secondary-color: #fff;
+    --alt-secondary-color: #eaeaea;
+    --primary-icon-color: #b1b1b1;
+    --secondary-icon-color: #6b7376;
 
     --b-standard: 2px dashed var(--primary-color);
     --b-thin: 1px dashed var(--primary-color);
 }
 
-.d-flex {
-    display: flex;
+.align-center {
+    align-items: center;
 }
 
-.d-flex-center {
+.flex-center {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.flex-al_c-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.d-in-block {
+    display: inline-block;
+}
+
+.no-border {
+    border: 0;
+}
+
+.h-100 {
+    height: 100%;
+}
+
+.w-100 {
+    width: 100%;
 }
 
 body {
@@ -29,58 +53,106 @@ body {
     position: relative;
 }
 
+i,
+li {
+    cursor: pointer;
+}
+
+img {
+    width: 40px;
+    border-radius: 50%;
+    box-shadow: 0px 0px 5px -2px #000;
+    margin: 5px 5px 5px 0;
+}
+
 #bg-bar {
-    background-color: green;
     height: 15vh;
-    width: 100%;
+    background-color: #009688;
 }
 
 #bg {
-    background-color: rgb(42, 3, 61);
     height: 85vh;
+    background-color: #dcdbd3;
 }
 
 #container-app {
+    background-color: var(--secondary-color);
     width: 80%;
     height: 95%;
-    background-color: white;
-    display: flex;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    box-shadow: 0 0 5px -2px var(--primary-color);
 }
 
-.notification-alert-section {
-    height: 40px;
+header,
+footer {
+    background-color: var(--alt-secondary-color);
 }
 
 aside {
-    width: 35%;
-    height: 100%;
-    display: flex;
+    width: 40%;
     flex-direction: column;
+    border-right: 1px solid var(--alt-secondary-color);
+    z-index: 5;
+}
+
+aside p {
+    font-size: 0.8rem;
+}
+
+aside i {
+    color: var(--primary-icon-color);
+}
+
+#notification-alert-section  {
+    background-color: #8edafc;
+    height: 60px;
+}
+
+#notification-alert-section i {
+    background-color: var(--secondary-color);
+    color: #8edafc;
+    padding: 7px;
+    border-radius: 50%;
+}
+
+#notification-alert-section a {
+    color: #c1b9bb;
+}
+
+#notification-alert-section span {
+    padding: 0 15px;
 }
 
 #user {
     height: 50px;
+    padding: 15px;
+}
+
+#user:first-child{
+    line-height: 45px;
+}
+
+#user img {
+    vertical-align: middle;
+}
+
+#user i {
+    display: inline-block;
+    padding: 0 5px;
 }
 
 #search-bar-container {
-    background-color: rgb(231, 231, 231);
-    border: var(--b-thin);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    background-color: var(--alt-secondary-color);
     height: 35px;
+    border-bottom: 0.5px solid var(--primary-icon-color);
 }
 
 #search-bar {
-    background-color: var(--secondary-color);
-    height: 80%;
     width: 96%;
-    display: flex;
-    align-items: center;
+    padding: 3px 0;
 }
 
 #search-bar input {
@@ -88,92 +160,154 @@ aside {
 }
 
 #search-bar i {
-    padding: 0 20px;
+    background-color: var(--secondary-color);
+    padding: 3px 20px;
 }
 
 #wrapper-contacts {
     height: calc(100% - 128px);
-}
-
-#contacts {
-    height: 100%;
     overflow-y: auto;
 }
 
+.date {
+    color: var(--secondary-icon-color);
+    align-self: flex-start;
+    font-size: 0.7rem;
+}
+
+.contact {
+    padding: 10px 15px;
+    border-bottom: 0.1px solid var(--primary-icon-color);
+    list-style-type: none;
+}
+
+.contact-info {
+    flex-basis: 60%;
+}
+
+.contact-info p {
+    color: #c1b9bb;
+}
+
+.selected-contact {
+    background-color: var(--alt-secondary-color);
+}
+
 #message-app {
-    height: 100%;
-    width: 100%;
-    display: flex;
+    width: 60%;
     flex-direction: column;
     justify-content: space-between;
 }
 
-.message-chat-container {
-    height: calc(100% - 100px);
-    overflow-y: auto;
-    background-image: url('../img/mine.jpg');
+#message-app header i {
+    color: var(--primary-icon-color);
 }
 
-.app-header {
-    height: 50px;
-    width: 100%;
-    position: sticky;
-}
-
+#app-header,
 #message-app footer {
     height: 50px;
-    width: 100%;
 }
 
-img {
-    width: 40px;
-    border-radius: 50%;
+#message-app footer i {
+    color: var(--secondary-icon-color);
 }
 
-.d-in-block {
-    display: inline-block;
+#app-header {
+    position: sticky;
+    padding: 15px;
 }
 
-li {
-    padding: 10px 15px;
-    display: flex;
-    justify-content: space-between;
-    list-style-type: none;
+#app-header img {
+    margin: 0 15px;
 }
 
-.selected-contact {
-    background-color: rgb(205, 205, 205);
+#app-header i,
+#app-footer i {
+    padding: 0 5px;
 }
 
-#contacts p {
-    font-size: 0.8rem;
-    color: rgb(72, 72, 72);
+#message-app-chat {
+    height: calc(100% - 100px);
+    padding: 10px 80px;
+    background-image: url('../img/mine.jpg');
+    flex-direction: column;
+    overflow-y: auto;
 }
 
-.recived,
+.message {
+    max-width: 300px;
+    margin: 15px 0px;
+    padding: 15px 20px;
+    border-radius: 10px;
+    position: relative;
+}
+
+.message .date {
+    position: absolute;
+    right: 3px;
+    bottom: 3px;
+    margin: 10px;
+}
+
+.text-message {
+    margin-right: 40px;
+}
+
 .sent {
-    height: 100%;
-    border: 1px solid black;
-    width: 50%;
+    background-color: #d5f9ba;
+    align-self: flex-end;
+}
+
+.recived {
+    background-color: var(--secondary-color);
+    align-self: flex-start;
+}
+
+#app-footer {
+    justify-content: space-around;
+}
+
+#app-footer input {
+    width: 80%;
+    height: 65%;
+    padding-left: 15px;
+    border-radius: 3px;
+}
+
+#send-message-btn {
+    background-color: #009688;
+    color: var(--alt-secondary-color);
+    width: 30px;
+    height: 30px;
+    box-shadow: 0 0 5px -2px var(--primary-color);
+}
+
+.fa-paper-plane {
+    color: var(--secondary-color)!important;
 }
 
 /* Debug */
+.debug #container-app,
+.debug aside,
+.debug #user,
+.debug header,
+.debug footer {
+    border: 1px solid var(--primary-color);
+}
+
 .debug #container-app {
     background-color: red;
-    border: var(--b-standard);
 }
 
 .debug aside {
-    background-color: lightslategray;
-    border: var(--b-thin);
+    background-color: #778899;
 }
 
 .debug header,
 .debug footer {
-    background-color: aqua;
-    border: var(--b-thin);
+    background-color: #00ffff;
 }
 
-.debug #app {
-    background-color: black;
+.debug #notification-alert-section {
+    background-color: #00ff88;
 }

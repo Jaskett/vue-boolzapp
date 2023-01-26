@@ -88,7 +88,7 @@ aside {
 }
 
 #search-bar i {
-    padding: 0 10px;
+    padding: 0 20px;
 }
 
 #wrapper-contacts {
@@ -98,7 +98,6 @@ aside {
 #contacts {
     height: 100%;
     overflow-y: auto;
-    padding-top: 5px;
 }
 
 #message-app {
@@ -112,6 +111,13 @@ aside {
 .message-chat-container {
     height: calc(100% - 100px);
     overflow-y: auto;
+    background-image: url('../img/mine.jpg');
+}
+
+.app-header {
+    height: 50px;
+    width: 100%;
+    position: sticky;
 }
 
 #message-app footer {
@@ -119,10 +125,36 @@ aside {
     width: 100%;
 }
 
-.app-header {
-    height: 50px;
-    width: 100%;
-    position: sticky;
+img {
+    width: 40px;
+    border-radius: 50%;
+}
+
+.d-in-block {
+    display: inline-block;
+}
+
+li {
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+}
+
+.selected-contact {
+    background-color: rgb(205, 205, 205);
+}
+
+#contacts p {
+    font-size: 0.8rem;
+    color: rgb(72, 72, 72);
+}
+
+.recived,
+.sent {
+    height: 100%;
+    border: 1px solid black;
+    width: 50%;
 }
 
 /* Debug */

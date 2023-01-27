@@ -19,6 +19,10 @@
     display: flex;
 }
 
+.override-MQ {
+    display: block!important;
+}
+
 .d-none {
     display: none;
 }

@@ -41,7 +41,7 @@
 
                     <div class="d-in-block w-100">
                         <h5>Ricevi notifiche di nuovi messaggi</h5>
-                        <a href="#">Attiva notifiche desktop</a>
+                        <a href="#" @click="hide()">Attiva notifiche desktop</a>
                     </div>
                 </div>
 
@@ -55,81 +55,11 @@
 
             <div id="wrapper-contacts">
                 <ul class="h-100">
-                    <li class="contact selected-contact flex-al_c-between">
-                        <img src="img/avatar_1.jpg" alt="Avatar Contatto">
+                    <li v-for="(contact, index) in contacts" class="contact flex-al_c-between" @click="addClass(index)">
+                        <img :src="'img/avatar' + contacts[index].avatar + '.jpg'" :alt="'Avatar' + '' + contacts[index].name">
                         <div class="contact-info">
-                            <h4>Michele</h4>
-                            <p>Ultimo messaggio inviato</p>
-                        </div>
-
-                        <div class="date">12:00</div>
-                    </li>
-
-                    <li class="contact flex-al_c-between">
-                        <img src="img/avatar_2.jpg" alt="Avatar Utente">
-                        <div class="contact-info">
-                            <h4>Fabio</h4>
-                            <p>Ultimo messaggio inviato</p>
-                        </div>
-
-                        <div class="date">12:00</div>
-                    </li>
-
-                    <li class="contact flex-al_c-between">
-                        <img src="img/avatar_3.jpg" alt="Avatar Utente">
-                        <div class="contact-info">
-                            <h4>Samuele</h4>
-                            <p>Ultimo messaggio inviato</p>
-                        </div>
-
-                        <div class="date">12:00</div>
-                    </li>
-
-                    <li class="contact flex-al_c-between">
-                        <img src="img/avatar_4.jpg" alt="Avatar Utente">
-                        <div class="contact-info">
-                            <h4>Alessandro B.</h4>
-                            <p>Ultimo messaggio inviato</p>
-                        </div>
-
-                        <div class="date">12:00</div>
-                    </li>
-
-                    <li class="contact flex-al_c-between">
-                        <img src="img/avatar_5.jpg" alt="Avatar Utente">
-                        <div class="contact-info">
-                            <h4>Alessandro L.</h4>
-                            <p>Ultimo messaggio inviato</p>
-                        </div>
-
-                        <div class="date">12:00</div>
-                    </li>
-
-                    <li class="contact flex-al_c-between">
-                        <img src="img/avatar_6.jpg" alt="Avatar Utente">
-                        <div class="contact-info">
-                            <h4>Claudia</h4>
-                            <p>Ultimo messaggio inviato</p>
-                        </div>
-
-                        <div class="date">12:00</div>
-                    </li>
-
-                    <li class="contact flex-al_c-between">
-                        <img src="img/avatar_7.jpg" alt="Avatar Utente">
-                        <div class="contact-info">
-                            <h4>Federico</h4>
-                            <p>Ultimo messaggio inviato</p>
-                        </div>
-
-                        <div class="date">12:00</div>
-                    </li>
-
-                    <li class="contact flex-al_c-between">
-                        <img src="img/avatar_8.jpg" alt="Avatar Utente">
-                        <div class="contact-info">
-                            <h4>Davide</h4>
-                            <p>Ultimo messaggio inviato</p>
+                            <h4>{{ contacts[index].name }}</h4>
+                            <p>{{ date }}</p>
                         </div>
 
                         <div class="date">12:00</div>
@@ -156,29 +86,21 @@
                 </div>
             </header>
 
-            <main id="message-app-chat" class="d-flex">
-                <div class="message sent">
-                    <span class="text-message">Hai portato a spasso il cane?</span>
-                    <span class="date">12:00</span>
-                </div>
-
-                <div class="message sent">
-                    <span class="text-message">Ricordati di stendere i panni</span>
-                    <span class="date">12:00</span>
-                </div>
-
-                <div class="recived">
-                    <span class="text-message">Tutto fatto!</span>
-                    <span class="date">12:00</span>
-                </div>
+            <main id="message-app-chat">
+                <ul v-for="item in contacts" class="d-flex">
+                    <li v-for="(message, index) in item.messages" :class="item.messages[index].status" class="message">
+                        <div>{{item.messages[index].message}}</div>
+                        <span class="date">{{item.messages[index].date}}</span>
+                    </li>
+                </ul>
             </main>
 
             <footer id="app-footer" class="d-flex align-center w-100">
                 <i class="fa-regular fa-face-smile"></i>
 
-                <input class="no-border" type="text" id="textMessage" placeholder="Scrivi un messaggio">
+                <input id="textMessage" type="text" class="no-border" placeholder="Scrivi un messaggio" v-model="txtInput">
 
-                <button id="send-message-btn" class="no-border">
+                <button id="send-message-btn" class="no-border" :class=" (txtInput == '') ? 'd-none' : '' " @click="">
                     <i class="fa-solid fa-paper-plane"></i>
                 </button>
 
@@ -187,6 +109,7 @@
         </div>
     </div>
     <!-- JavaScript -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script type="text/javascript" src="js/scripts.js"></script>
 </body>
 </html>

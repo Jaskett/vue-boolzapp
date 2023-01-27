@@ -19,6 +19,10 @@
     display: flex;
 }
 
+.d-none {
+    display: none;
+}
+
 .align-center {
     align-items: center;
 }
@@ -60,6 +64,11 @@ body {
 i,
 li {
     cursor: pointer;
+    transition: all 0.2s linear;
+}
+
+li {
+    list-style: none;
 }
 
 img {
@@ -124,6 +133,7 @@ aside i {
 
 #notification-alert-section a {
     color: #c1b9bb;
+    transition: all 0.3s linear;
 }
 
 #notification-alert-section span {
@@ -203,6 +213,11 @@ aside i {
     justify-content: space-between;
 }
 
+#message-app-chat ul {
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 #message-app header i {
     color: var(--primary-icon-color);
 }
@@ -239,18 +254,19 @@ aside i {
 }
 
 .message {
-    max-width: 300px;
+    width: 55%;
     margin: 15px 0px;
-    padding: 15px 20px;
+    padding: 25px 20px;
     border-radius: 10px;
     position: relative;
+    display: inline-block;
 }
 
 .message .date {
     position: absolute;
     right: 3px;
     bottom: 3px;
-    margin: 10px;
+    margin: 1px 5px;
 }
 
 .text-message {
@@ -262,7 +278,7 @@ aside i {
     align-self: flex-end;
 }
 
-.recived {
+.received {
     background-color: var(--secondary-color);
     align-self: flex-start;
 }
@@ -283,7 +299,8 @@ aside i {
     color: var(--alt-secondary-color);
     width: 30px;
     height: 30px;
-    box-shadow: 0 0 5px -2px var(--primary-color);
+    box-shadow: 0 0 5px -1px var(--primary-color);
+    animation: enter-btn 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
 
 .fa-paper-plane {

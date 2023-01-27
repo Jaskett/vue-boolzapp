@@ -3,14 +3,17 @@ const { createApp } = Vue
 createApp({
     data() {
         return {
+            isSent: '',
+            lastMessageTime: '12:00',
+            activeChatIndex: 0,
+            activeChatIndexImg: this.activeChatIndex +  1,
+            newMessage:'',
             txtInput: '',
-            isAddClass: false,
-            isSeent: '',
             contacts: [
                 {
                     name: 'Michele',
                     avatar: '_1',
-                    visible: true,
+                    hidden: false,
                     messages: [
                         {
                             date: '10/01/2020 15:30:55',
@@ -32,7 +35,7 @@ createApp({
                 {
                     name: 'Fabio',
                     avatar: '_2',
-                    visible: true,
+                    hidden: false,
                     messages: [
                         {
                             date: '20/03/2020 16:30:00',
@@ -54,7 +57,7 @@ createApp({
                 {
                     name: 'Samuele',
                     avatar: '_3',
-                    visible: true,
+                    hidden: false,
                     messages: [
                         {
                             date: '28/03/2020 10:10:40',
@@ -76,7 +79,7 @@ createApp({
                 {
                     name: 'Alessandro B.',
                     avatar: '_4',
-                    visible: true,
+                    hidden: false,
                     messages: [
                         {
                             date: '10/01/2020 15:30:55',
@@ -93,7 +96,7 @@ createApp({
                 {
                     name: 'Alessandro L.',
                     avatar: '_5',
-                    visible: true,
+                    hidden: false,
                     messages: [
                         {
                             date: '10/01/2020 15:30:55',
@@ -110,7 +113,7 @@ createApp({
                 {
                     name: 'Claudia',
                     avatar: '_6',
-                    visible: true,
+                    hidden: false,
                     messages: [
                         {
                             date: '10/01/2020 15:30:55',
@@ -132,7 +135,7 @@ createApp({
                 {
                     name: 'Federico',
                     avatar: '_7',
-                    visible: true,
+                    hidden: false,
                     messages: [
                         {
                             date: '10/01/2020 15:30:55',
@@ -149,7 +152,7 @@ createApp({
                 {
                     name: 'Davide',
                     avatar: '_8',
-                    visible: true,
+                    hidden: false,
                     messages: [
                         {
                             date: '10/01/2020 15:30:55',
@@ -171,25 +174,18 @@ createApp({
             ]                
         }
     },
+    mounted() {
+        let listContact = document.querySelectorAll('li');
+        listContact[this.activeChatIndex].classList.add('selected-contact');
+    },
     methods: {
-        created() {
-            let firstContact = document.querySelector('aside li');
-            firstContact.classList.add('selected-contact');
-        },
-        addClass(index) {
-            console.log(`Indice contatto cliccato: ${index}`);
+        moveActive(index) {
             let listContact = document.querySelectorAll('li');
-
-            if(this.isAddClass == false) {
-                for(let i = 0; i < listContact.length; i++) {
-                    listContact[i].classList.remove('selected-contact');
-                }
-                listContact[index].classList.add('selected-contact');
-                this.isAddClass = true;
-            } else {
-                listContact[index].classList.remove('selected-contact');
-                this.isAddClass = false;
-            }
+            listContact[this.activeChatIndex].classList.remove('selected-contact');
+            this.activeChatIndex = index;
+            listContact[this.activeChatIndex].classList.add('selected-contact');
+            // this.isAddClass = true;
+            console.log(`Il contatto attivo è: ${this.activeChatIndex}`);
         },
         hide() {
             document.getElementById('notification-alert-section').classList.add('d-none');

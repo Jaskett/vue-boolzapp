@@ -175,7 +175,7 @@ aside i {
 
 #search-bar i {
     background-color: var(--secondary-color);
-    padding: 3px 20px;
+    padding: 2.6px 20px;
 }
 
 #wrapper-contacts {
@@ -247,7 +247,7 @@ aside i {
 
 #message-app-chat {
     height: calc(100% - 100px);
-    padding: 10px 80px;
+    padding: 10px 60px;
     background-image: url('../img/mine.jpg');
     flex-direction: column;
     overflow-y: auto;

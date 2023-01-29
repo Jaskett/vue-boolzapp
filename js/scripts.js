@@ -10,11 +10,11 @@ createApp({
             activeChatIndexImg: this.activeChatIndex +  1,
             newMessage:'',
             txtInput: '',
+            searchInput: '',
             contacts: [
                 {
                     name: 'Michele',
                     avatar: '_1',
-                    hidden: false,
                     messages: [
                         {
                             date: '10/01/2020',
@@ -39,7 +39,6 @@ createApp({
                 {
                     name: 'Fabio',
                     avatar: '_2',
-                    hidden: false,
                     messages: [
                         {
                             date: '20/03/2020',
@@ -64,7 +63,6 @@ createApp({
                 {
                     name: 'Samuele',
                     avatar: '_3',
-                    hidden: false,
                     messages: [
                         {
                             date: '28/03/2020',
@@ -89,7 +87,6 @@ createApp({
                 {
                     name: 'Alessandro B.',
                     avatar: '_4',
-                    hidden: false,
                     messages: [
                         {
                             date: '10/01/2020',
@@ -108,7 +105,6 @@ createApp({
                 {
                     name: 'Alessandro L.',
                     avatar: '_5',
-                    hidden: false,
                     messages: [
                         {
                             date: '10/01/2020',
@@ -127,7 +123,6 @@ createApp({
                 {
                     name: 'Claudia',
                     avatar: '_6',
-                    hidden: false,
                     messages: [
                         {
                             date: '10/01/2020',
@@ -152,7 +147,6 @@ createApp({
                 {
                     name: 'Federico',
                     avatar: '_7',
-                    hidden: false,
                     messages: [
                         {
                             date: '10/01/2020',
@@ -171,7 +165,6 @@ createApp({
                 {
                     name: 'Davide',
                     avatar: '_8',
-                    hidden: false,
                     messages: [
                         {
                             date: '10/01/2020',
@@ -199,6 +192,29 @@ createApp({
     mounted() {
         let listContact = document.querySelectorAll('li');
         listContact[this.activeChatIndex].classList.add('selected-contact');
+    },
+    computed: {
+        filterContact() {
+            let listContact = document.querySelectorAll('li');
+            let str = this.searchInput.trim();
+            if(str !== '') {
+                for(let i = 0; i < this.contacts.length; i++) {
+                    if(!this.contacts[i].name.includes(str)) {
+                        listContact[i].classList.add('d-none');
+                        console.log(`L'input di ricerca è ${str}`);
+                        console.log('contatto i =' + ' ' + listContact[i]);
+                        console.log(` La stringa ${str} NON è contenuta in ${this.contacts[i].name}`);
+                    } else {
+                        console.log(` La stringa ${str} è contenuta in ${this.contacts[i].name}`);
+                    }
+                }
+            } else if(str == '') {
+                for (let x = 0; x < this.contacts.length; x++) {
+                    listContact[x].classList.remove('d-none');
+                }
+            }
+            return str;
+        }
     },
     methods: {
         moveActive(index) {
@@ -243,6 +259,6 @@ createApp({
                 status: 'received'
             }
             this.contacts[this.activeChatIndex].messages.push(newR);
-        }
+        },
     }
 }).mount('#container-app');

@@ -48,7 +48,7 @@
                 <div id="search-bar-container" class="flex-center">
                     <div id="search-bar" class="d-flex align-center">
                         <i class="fa-solid fa-magnifying-glass"></i>
-                        <input type="text" name="search-bar" id="search-bar" placeholder="Crea o inizia una nuova chat">
+                        <input type="text" name="search-bar" id="search-bar" placeholder="Crea o inizia una nuova chat" v-model="searchInput">
                     </div>
                 </div>
             </header>
@@ -59,7 +59,7 @@
                         <img :src="'img/avatar' + contacts[index].avatar + '.jpg'" :alt="'Avatar' + '' + contacts[index].name">
                         <div class="contact-info">
                             <h4>{{ contacts[index].name }}</h4>
-                            <p>Ultimo messaggio: {{ lastMessageTime }}</p>
+                            <p>{{ lastMessageTime }}</p>
 
                             <!-- Ultimo messaggio ML5 -->
                             <!--<p v-for="(data, index) in contact.messages[index]">
